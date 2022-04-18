@@ -7,7 +7,7 @@ DEFAULTS = {
     "NONCE_LEN": 24,
     "VALIDATION_SERIALIZER": "metaMaskAuth.serializers.WalletTokenObtainSerializer",
     "WALLET_AUTHENTICATION_SERIALIZER": "metaMaskAuth.serializers.WalletAuthSerializer",
-    "USE_SLIDING_TOKEN": False
+    "USE_SLIDING_TOKEN": False,
 }
 
 STRING_IMPORTS = [

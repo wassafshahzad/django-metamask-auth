@@ -19,7 +19,10 @@ class Migration(migrations.Migration):
             name="WalletAuthModel",
             fields=[
                 ("public_address", models.TextField(primary_key=True, serialize=False)),
-                ("nonce", models.TextField(default=metaMaskAuth.models.generate_random)),
+                (
+                    "nonce",
+                    models.TextField(default=metaMaskAuth.models.generate_random),
+                ),
                 (
                     "user",
                     models.OneToOneField(

@@ -76,6 +76,7 @@ class TokenObtainPairSerializer(WalletTokenObtainSerializer):
 
         return data
 
+
 class TokenObtainSlidingSerializer(WalletTokenObtainSerializer):
     token_class = SlidingToken
 
@@ -89,4 +90,4 @@ class TokenObtainSlidingSerializer(WalletTokenObtainSerializer):
         if api_settings.UPDATE_LAST_LOGIN:
             update_last_login(None, self.user)
 
-        return 
+        return
