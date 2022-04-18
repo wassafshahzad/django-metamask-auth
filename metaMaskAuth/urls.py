@@ -5,12 +5,12 @@ from .views import MetaMaskCreateRetrieveViewSet, MetaMaskTokenObtainView
 
 
 router = routers.SimpleRouter()
-router.register(r"metamask", MetaMaskCreateRetrieveViewSet, basename="metamask")
+router.register(r"", MetaMaskCreateRetrieveViewSet, basename="metamask")
 
 
 urlpatterns = [
     path(
-        "metamask/login/<int:public_address>",
+        "login/<str:public_address>",
         MetaMaskTokenObtainView.as_view(),
         name="metamask-login",
     )
