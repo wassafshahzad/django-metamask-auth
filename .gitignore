@@ -1,0 +1,3 @@
+dist/*
+django_metamask_auth.egg-info/*
+*.pyc
