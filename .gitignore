@@ -1,3 +1,8 @@
 dist/*
 django_metamask_auth.egg-info/*
 *.pyc
+env/
+**/node_modules/*
+db.sqlite3
+.text
+static/
