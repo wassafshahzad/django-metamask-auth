@@ -2,10 +2,10 @@ import { Buffer } from "buffer";
 
 const BASE_URL = "metamask/"
 
-async function createUser() {
+async function createUserAndLogin({username}) {
+
     const publicAddress = await getPublicAddress()
-    // This request is used to create the user and you will receive a nonce and public address as a result
-    fetch(BASE_URL, {
+    return fetch(BASE_URL, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -14,36 +14,36 @@ async function createUser() {
         body: JSON.stringify({
             public_address: publicAddress,
             user: {
-                username: "TestUsre"
+                username: username
             }
         })
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
-}
+    }).then(response => response.json()).then(
+        (data) => {
+            return login(data)
+        })
+    }
 
-async function login(){
-    // retrieved from previous request
-    const nonce = ""
-    const from =""
+async function login({nonce, public_address}) {
+
     const msg = `0x${Buffer.from(nonce, 'utf8').toString('hex')}`;
     const sign = await window.ethereum.request({
-      method: 'personal_sign',
-      params: [msg, from],
+        method: 'personal_sign',
+        params: [msg, public_address],
     });
-    
-    fetch(BASE_URL+"login/"+from, {
+
+    return fetch(BASE_URL + "login/" + public_address, {
         method: "POST",
         mode: "cors",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            signature : sign
+            signature: sign
         })
     })
-        .then(response => response.json())
-        .then(data => console.log(data))
+        .then(response => response.json()).then((data) => {
+            return data
+        })
 }
 
 async function getPublicAddress() {
@@ -52,6 +52,21 @@ async function getPublicAddress() {
     return accounts[0]
 }
 
+async function performLogin(){
+    const publicAddress = await getPublicAddress()
+    const URL =  BASE_URL + publicAddress
+    return fetch(URL, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(response => response.json()).then(
+        (data) => {
+            return login(data)
+        })
+}
 
 
-export { getPublicAddress, createUser, login }
+
+export { getPublicAddress, createUserAndLogin, login, performLogin }

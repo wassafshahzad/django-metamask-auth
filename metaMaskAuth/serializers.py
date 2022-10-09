@@ -14,7 +14,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = [*User.REQUIRED_FIELDS, "username"]
+        fields = [*User.REQUIRED_FIELDS, User.USERNAME_FIELD]
 
     def create(self, validated_data):
         validated_data["password"] = hashers.make_password(None)
