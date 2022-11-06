@@ -119,11 +119,11 @@ Running the sample backend
 ===========================
 
 The backend is a simple django app using the latest commit of django-metamask-auth to run the sample app
-- Firstly, create a python virtual enviroment.
-- CD into SampleProject/sample folder.
-- Run `pip install -r requirement.txt`
-- Run `python manage.py migrate` (to create neccesary tables)
-- Run `python manage.py runserver`
+ - Firstly, create a python virtual enviroment.
+ - CD into SampleProject/sample folder.
+ - Run `pip install -r requirement.txt`
+ - Run `python manage.py migrate` (to create neccesary tables) 
+ - Run `python manage.py runserver`
 
 This should get your backend server up and running.
 
