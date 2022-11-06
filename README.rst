@@ -107,3 +107,35 @@ You can provide `MetaMaskAuth` settings like this::
 - USE_SLIDING_TOKEN
 
     - A boolean value, used to set whether to use sliding token or not.
+
+
+Running Sample Apps
+--------------------
+
+Recently, I added a sample app to make it easier to work with the library. Kindly follow the simple steps below
+to run the app on your local setup.
+
+Running the sample backend
+===========================
+
+The backend is a simple django app using the latest commit of django-metamask-auth to run the sample app
+- Firstly, create a python virtual enviroment.
+- CD into SampleProject/sample folder.
+- Run `pip install -r requirement.txt`
+- Run `python manage.py migrate` (to create neccesary tables)
+- Run `python manage.py runserver`
+
+This should get your backend server up and running.
+
+Running the sample frontend
+============================
+
+The frontend of the application is a react app which is bundled with webpack and served through django.
+Follow three follwing steps to run the frontend of the sample application.
+- Make sure te backend server is up and running.
+    - Since the frontend is served through django.
+- CD into the frontend folder (SampleProject/sample/frontend)
+- Install the required packages using `npm install`
+- Run the dev server using `npm run dev`
+
+Your Sample application should be up and running :) enjoy.
